@@ -1,25 +1,83 @@
-# Getting Started
+# Invoice PDF Generator
 
-Welcome to your new project.
+### PDF Generation
 
-It contains these folders and files, following our recommended project layout:
-
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+The application generates professional invoices with:
+- Company logo and branding
+- Invoice header (number, date, customer details)
+- Itemized line items with quantities and prices
+- Automatic total calculation
+- Payment information and terms
+- Professional footer
 
 
-## Next Steps
+### Bounded Actions
 
-- Open a new terminal and run `cds watch`
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+Uses OData V4 bounded actions for PDF generation:
+```javascript
+// Service Definition
+action generatePDF() returns LargeBinary;
+
+// Frontend Call
+POST /odata/v4/invoice/Invoices(ID)/InvoiceService.generatePDF
+```
+
+### Navigation
+
+- **List Report**: View all invoices
+- **PDF Download**: One-click PDF generation from both views
 
 
-## Learn More
 
-Learn more at https://cap.cloud.sap/docs/get-started/.
+## Data Model
+
+### Invoices Entity
+- ID (UUID)
+- Invoice Number
+- Invoice Date
+- Customer Name
+- Customer Address
+- Total Amount
+- Items (Composition)
+
+### Invoice Items Entity
+- ID (UUID)
+- Description
+- Quantity
+- Unit Price
+- Amount
+
+##  Customization
+
+### Add Your Company Logo
+
+1. Place your logo in `srv/images/logo.png`
+2. Update the path in `srv/invoice-service.js`:
+```javascript
+const logoPath = path.join(__dirname, 'images', 'logo.png');
+```
+
+### Customize PDF Template
+
+Edit the `makePDF` function in `srv/invoice-service.js` to modify:
+- Colors and styling
+- Header/footer content
+- Company information
+- Terms and conditions
+
+- 
+## Sample Data
+
+Sample invoices are included in `db/data/`:
+- `invoice.app-Invoices.csv` - Invoice headers
+- `invoice.app-InvoiceItems.csv` - Invoice line items
+
+
+## Testing
+
+### Test PDF Generation
+
+1. Navigate to http://localhost:4004/invoiceapp/webapp/index.html
+2. Click on any invoice row to view details
+3. Click "Print PDF" button
+4. PDF will download automatically
