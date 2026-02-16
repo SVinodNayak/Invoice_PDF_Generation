@@ -1,0 +1,105 @@
+<mvc:View controllerName="com.mycompany.invoice.invoiceapp.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    
+        <Page 
+            id="page" 
+            title="Invoice Management"
+            showNavButton="false">
+            
+            <headerContent>
+                <Button 
+                    id="createBtn"
+                    text="Create Invoice" 
+                    icon="sap-icon://add"
+                    press="onCreateInvoice"
+                    type="Emphasized"/>
+            </headerContent>
+            
+            <content>
+                <Table
+                    id="invoiceTable"
+                    inset="false"
+                    items="{
+                        path: '/Invoices',
+                        parameters: {
+                            $expand: 'items'
+                        }
+                    }"
+                    mode="SingleSelectMaster"
+                    selectionChange="onSelectionChange">
+                    
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="Invoices" level="H2"/>
+                            <ToolbarSpacer/>
+                            <SearchField 
+                                id="searchField"
+                                width="50%" 
+                                search="onSearch"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    
+                    <columns>
+                        <Column width="15%">
+                            <Text text="Invoice Number"/>
+                        </Column>
+                        <Column width="15%">
+                            <Text text="Date"/>
+                        </Column>
+                        <Column width="25%">
+                            <Text text="Customer"/>
+                        </Column>
+                        <Column width="20%">
+                            <Text text="Address"/>
+                        </Column>
+                        <Column width="15%" hAlign="End">
+                            <Text text="Total Amount"/>
+                        </Column>
+                        <Column width="10%" hAlign="Center">
+                            <Text text="Actions"/>
+                        </Column>
+                    </columns>
+                    
+                    <items>
+                        <ColumnListItem type="Navigation" press="onInvoicePress">
+                            <cells>
+                                <ObjectIdentifier 
+                                    title="{invoiceNumber}"/>
+                                <Text 
+                                    text="{
+                                        path: 'invoiceDate',
+                                        type: 'sap.ui.model.type.Date',
+                                        formatOptions: {
+                                            pattern: 'dd/MM/yyyy'
+                                        }
+                                    }"/>
+                                <Text text="{customerName}"/>
+                                <Text text="{customerAddress}"/>
+                                <ObjectNumber 
+                                    number="{
+                                        path: 'totalAmount',
+                                        type: 'sap.ui.model.type.Currency',
+                                        formatOptions: {
+                                            showMeasure: false
+                                        }
+                                    }"
+                                    unit="USD"
+                                    emphasized="true"/>
+                                <HBox justifyContent="Center">
+                                    <Button
+                                        icon="sap-icon://pdf-attachment"
+                                        tooltip="Print PDF"
+                                        type="Transparent"
+                                        press="onPrintPDF"/>
+                                </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </content>
+        </Page>
+</mvc:View>

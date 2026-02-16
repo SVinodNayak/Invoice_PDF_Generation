@@ -1,0 +1,8 @@
+ID,invoiceNumber,invoiceDate,customerName,customerAddress,totalAmount
+550e8400-e29b-41d4-a716-446655440000,INV-001,2024-01-15,Acme Corporation,123 Business St, New York, NY 10001,1500.00 
+550e8400-e29b-41d4-a716-446655440001,INV-002,2024-01-20,Tech Solutions Inc,456 Tech Ave, San Francisco, CA 94102,2750.50
+550e8400-e29b-41d4-a716-446655440002,INV-003,2024-02-05,Global Enterprises,789 Market Rd, Chicago, IL 60601,3200.00
+550e8400-e29b-41d4-a716-446655440003,INV-004,2024-02-10,NextGen Systems,101 Innovation Dr, Austin, TX 73301,1850.75
+550e8400-e29b-41d4-a716-446655440004,INV-005,2024-02-18,Alpha Retail Ltd,222 Commerce Blvd, Seattle, WA 98101,4125.25
+550e8400-e29b-41d4-a716-446655440005,INV-006,2024-03-02,Bright Future Corp,333 Future Ln, Boston, MA 02108,950.00
+550e8400-e29b-41d4-a716-446655440006,INV-007,2024-03-12,InnovateX Pvt Ltd,444 Startup St, Dallas, TX 75001,2750.00

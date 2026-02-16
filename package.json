@@ -1,0 +1,24 @@
+{
+  "name": "invoice-pdf-app",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@sap/cds": "^9.7.1",
+    "express": "^4",
+    "pdfkit": "^0.17.2"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "cds-plugin-ui5": "^0.13.0",
+    "@cap-js/cds-test": "^0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-invoiceapp": "cds watch --open com.mycompany.invoice.invoiceapp/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "test": "node --test"
+  },
+  "private": true,
+  "workspaces": [
+    "app/*"
+  ]
+}

@@ -1,0 +1,61 @@
+<mvc:View controllerName="com.mycompany.invoice.invoiceapp.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <App id="app">
+    <Page title="Invoice Management">
+            <content>
+                <Table
+                    items="{/Invoices}">
+                    
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="Invoices" level="H2"/>
+                            <ToolbarSpacer/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    
+                    <columns>
+                        <Column width="20%">
+                            <Text text="Invoice Number"/>
+                        </Column>
+                        <Column width="15%">
+                            <Text text="Date"/>
+                        </Column>
+                        <Column width="25%">
+                            <Text text="Customer"/>
+                        </Column>
+                        <Column width="20%" hAlign="End">
+                            <Text text="Total"/>
+                        </Column>
+                        <Column width="20%" hAlign="Center">
+                            <Text text="Actions"/>
+                        </Column>
+                    </columns>
+                    
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <ObjectIdentifier title="{invoiceNumber}"/>
+                                <Text text="{invoiceDate}"/>
+                                <VBox>
+                                    <Text text="{customerName}"/>
+                                    <Text text="{customerAddress}"/>
+                                </VBox>
+                                <ObjectNumber 
+                                    number="{totalAmount}"
+                                    unit="USD"
+                                    emphasized="true"/>
+                                <Button
+                                    text="Print PDF"
+                                    icon="sap-icon://pdf-attachment"
+                                    type="Emphasized"
+                                    press="onPrintPDF"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </content>
+        </Page>
+    </App>
+</mvc:View>
